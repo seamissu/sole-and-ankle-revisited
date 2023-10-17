@@ -7,29 +7,101 @@ import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
 
-const MobileMenu = ({ isOpen, onDismiss }) => {
-  if (!isOpen) {
-    return null;
-  }
+import { COLORS, WEIGHTS } from '../../constants';
 
+const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
     <div>
-      <button onClick={onDismiss}>Dismiss menu</button>
-      <nav>
-        <a href="/sale">Sale</a>
-        <a href="/new">New&nbsp;Releases</a>
-        <a href="/men">Men</a>
-        <a href="/women">Women</a>
-        <a href="/kids">Kids</a>
-        <a href="/collections">Collections</a>
-      </nav>
-      <footer>
-        <a href="/terms">Terms and Conditions</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/contact">Contact Us</a>
-      </footer>
+      <Overlay isOpen={isOpen} onDismiss={onDismiss}>
+        <Content aria-label="menu">
+          <DismissButton onClick={onDismiss}>
+            <VisuallyHidden>Dismiss menu</VisuallyHidden>
+            <Icon id="close" strokeWidth={2} />
+          </DismissButton>
+          <Buffer></Buffer>
+          <Nav>
+            <Link href="/sale">Sale</Link>
+            <Link href="/new">New&nbsp;Releases</Link>
+            <Link href="/men">Men</Link>
+            <Link href="/women">Women</Link>
+            <Link href="/kids">Kids</Link>
+            <Link href="/collections">Collections</Link>
+          </Nav>
+          <Footer>
+            <BottomLink href="/terms">
+              Terms and Conditions
+            </BottomLink>
+            <BottomLink href="/privacy">Privacy Policy</BottomLink>
+            <BottomLink href="/contact">Contact Us</BottomLink>
+          </Footer>
+        </Content>
+      </Overlay>
     </div>
   );
 };
+
+const Overlay = styled(DialogOverlay)`
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  background-color: hsla(220deg 5% 40% / 0.8);
+`;
+
+const Content = styled(DialogContent)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: ${COLORS.white};
+`;
+
+const DismissButton = styled(UnstyledButton)`
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  padding: 16px;
+`;
+
+const Link = styled.a`
+  text-decoration: none;
+  color: ${COLORS.gray[900]};
+  font-weight: ${WEIGHTS.medium};
+  font-size: 18px;
+
+  &:first-of-type {
+    color: ${COLORS.secondary};
+  }
+`;
+
+const BottomLink = styled.a`
+  text-decoration: none;
+  color: ${COLORS.gray[700]};
+  font-weight: ${WEIGHTS.normal};
+  font-size: 14px;
+`;
+
+const Buffer = styled.div`
+  flex: 1;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-transform: uppercase;
+`;
+
+const Footer = styled.footer`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+`;
 
 export default MobileMenu;
