@@ -7,7 +7,7 @@ import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { WEIGHTS } from '../../constants';
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
@@ -45,7 +45,7 @@ const Overlay = styled(DialogOverlay)`
   inset: 0;
   height: 100%;
   width: 100%;
-  background-color: hsla(220deg 5% 40% / 0.8);
+  background-color: var(--color-backdrop);
 `;
 
 const Content = styled(DialogContent)`
@@ -57,7 +57,7 @@ const Content = styled(DialogContent)`
   display: flex;
   flex-direction: column;
   padding: 32px;
-  background-color: ${COLORS.white};
+  background-color: var(--color-white);
 `;
 
 const DismissButton = styled(UnstyledButton)`
@@ -69,18 +69,18 @@ const DismissButton = styled(UnstyledButton)`
 
 const Link = styled.a`
   text-decoration: none;
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
   font-size: 18px;
 
   &:first-of-type {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 `;
 
 const BottomLink = styled.a`
   text-decoration: none;
-  color: ${COLORS.gray[700]};
+  color: var(--color-gray-700);
   font-weight: ${WEIGHTS.normal};
   font-size: 14px;
 `;
