@@ -32,11 +32,11 @@ const Header = () => {
           </UnstyledButton>
         </ButtonList>
         <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/sale">À vendre</NavLink>
+          <NavLink href="/new">Nouvelles versions</NavLink>
+          <NavLink href="/men">Hommes</NavLink>
+          <NavLink href="/women">Femmes</NavLink>
+          <NavLink href="/kids">les enfants</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <SideRight />
@@ -54,7 +54,6 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 
   @media ${QUERIES.tabletAndDown} {
@@ -86,8 +85,10 @@ const ButtonList = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
   margin: 0px 48px;
+  overflow: scroll;
+  white-space: nowrap;
+  gap: clamp(1.1rem, 10.3vw - 5rem, 3.6rem);
 
   @media ${QUERIES.tabletAndDown} {
     display: none;
